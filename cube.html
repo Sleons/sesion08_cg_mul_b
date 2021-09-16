@@ -5,35 +5,35 @@
 	<title>MDN Games: Three.js demo</title>
 	<style>
 		body { margin: 0; padding: 0; font-size: 0; }
-		canvas { width: 100%; height: 100%; }
+		canvas { width: 100%; height: 100%; } // Tamaño del canvas
 	</style>
 </head>
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> // Librería three.js
 <script>
-	var WIDTH = window.innerWidth;
-	var HEIGHT = window.innerHeight;
+	var WIDTH = window.innerWidth; // Variable del tamaño de todo el ancho de la ventana
+	var HEIGHT = window.innerHeight; // Variable del tamaño de todo el alto de la pantalla
 
-	var renderer = new THREE.WebGLRenderer({antialias:true});
-	renderer.setSize(WIDTH, HEIGHT);
-	renderer.setClearColor(0xDDDDDD, 1);
+	var renderer = new THREE.WebGLRenderer({antialias:true}); // Se declara la variable renderizar (Con antialiasing activado)
+	renderer.setSize(WIDTH, HEIGHT); // La imagen a renderizar será del tamaño de la ventana
+	renderer.setClearColor(0xDDDDDD, 1); // Se declara la textura de la ventana
 	document.body.appendChild(renderer.domElement);
 
-	var scene = new THREE.Scene();
+	var scene = new THREE.Scene(); // Se declara una nueva escena 
 
-	var camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT);
-	camera.position.z = 50;
-	scene.add(camera);
+	var camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT); // Se declara una nueva camara
+	camera.position.z = 50; // La posición de la camara en la coordenada Z
+	scene.add(camera); // Se agrega la camara a la  escena
 
-	var boxGeometry = new THREE.BoxGeometry(10, 10, 10);
-	var basicMaterial = new THREE.MeshBasicMaterial({color: 0x0095DD});
-	var cube = new THREE.Mesh(boxGeometry, basicMaterial);
-	scene.add(cube);
-	cube.rotation.set(0.4, 0.2, 0);
+	var boxGeometry = new THREE.BoxGeometry(10, 10, 10); // Se declara la geometría del cubo
+	var basicMaterial = new THREE.MeshBasicMaterial({color: 0x0095DD}); // Se  declara la textura del cubo
+	var cube = new THREE.Mesh(boxGeometry, basicMaterial); //Se declara el nuevo cubo con la geometría y el material
+	scene.add(cube); // Se añade el cubo a la escena
+	cube.rotation.set(0.4, 0.2, 0); // Coordenadas a las que se rota el cubo
 
-	function render() {
-		requestAnimationFrame(render);
-		renderer.render(scene, camera);
+	function render() { // Función para renderizar
+		requestAnimationFrame(render); // Se llama al render
+		renderer.render(scene, camera); // Se renderiza la escena y la camara
 	}
 	render();
 </script>
