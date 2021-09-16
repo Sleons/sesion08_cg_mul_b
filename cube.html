@@ -22,17 +22,22 @@
 	var scene = new THREE.Scene(); // Se declara una nueva escena 
 
 	var camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT); // Se declara una nueva camara con el tamaño de la  ventana
-	camera.position.z = 50; // La posición de la camara en la coordenada Z
+	camera.position.z = 60; // La posición de la camara en la coordenada Z
+	camera.position.x = 20;
 	scene.add(camera); // Se agrega la camara a la  escena
 
 	const ejesXYZ = new THREE.AxesHelper( 35 );
         scene.add( ejesXYZ );
 	
 	var boxGeometry = new THREE.BoxGeometry(10, 10, 10); // Se declara la geometría del cubo con sus parametros
-	var basicMaterial = new THREE.MeshBasicMaterial({color: 0x0095DD}); // Se  declara la textura del cubo
+	var basicMaterial = new THREE.MeshLambertMaterial({color: 0xEAEFF2}); // Se  declara la textura del cubo
 	var cube = new THREE.Mesh(boxGeometry, basicMaterial); //Se declara el nuevo cubo con la geometría y el material
 	scene.add(cube); // Se añade el cubo a la escena
 	cube.rotation.set(0.4, 0.2, 0); // Coordenadas a las que se rota el cubo
+	
+	var light = new THREE.PointLight(0xFFFFFF);
+	light.position.set(-10,15,50);
+	scene.add(light);
 
 	function render() { // Función para renderizar
 		requestAnimationFrame(render); // Se llama al render
